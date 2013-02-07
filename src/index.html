@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Simple Edit</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="./components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="./styles/css/main.css">
+
+
+  <script type="text/javascript">
+    (function(win) {
+      // We need to rename require for node-webkit and requirejs compatibility.
+      win.requireNode = window.require;
+      win.require = undefined;
+
+      // Global variable.
+      win.simple = win.simple || {};
+      win._ = requireNode('underscore');
+    })(window);
+  </script>
+
+  <script src="./components/jquery/jquery.min.js"></script>
+
+  <script src="./components/requirejs/require.min.js" data-main="main"></script>
+  <script src="./thirdparty/ace/build/src/ace.js"></script>
+  <script src="./components/keymaster/keymaster.min.js"></script>
+</head>
+<body>
+
+<div id="application" ng:controller="fileController">
+  <div id="sidebar" ng-show="showSidebar()">
+    <div class="open-files" ng-show="showOpenFiles()">
+      <span>Open Files</span>
+      <ul>
+        <li ng-repeat="doc in getOpenFiles()"><i class="icon-remove" ng-click="removeFile(doc.uri)"></i><a data-uri="{{doc.uri}}" ng-click="setActive(doc.uri)" class="click">{{doc.name}}</a></li>
+      </ul>
+    </div>
+    <span>Folders</span>
+  <div id="file-controller" style="">
+    <input id="openFile" type="file" multiple="multiple" onchange="angular.element(this).scope().openFile(this.value)" />
+    <input id="saveFile" type="file" nwsaveas onchange="angular.element(this).scope().saveAsFile(this.value)" />
+  </div>
+  </div>
+  <div id="editors">
+    <div class="tabs">
+      <span ng-repeat="doc in getOpenFiles()" class="tab"><i class="icon-remove" ng-click="removeFile(doc.uri)"></i><a data-uri="{{doc.uri}}" ng-click="setActive(doc.uri)">{{doc.name}}</a></span>
+    </div>
+    <div class="editor-wrapper">
+      <div ng-repeat="doc in getOpenFiles()" ng-show="getActive() == doc.uri" id="{{doc.uri}}" class="ace-editors-divs"></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
