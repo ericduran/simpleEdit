@@ -1,0 +1,9 @@
+[submodule "src/thirdparty/codemirror"]
+	path = src/thirdparty/codemirror
+	url = git@github.com:marijnh/CodeMirror.git
+[submodule "src/thirdparty/gcli"]
+	path = src/thirdparty/gcli
+	url = git://github.com/joewalker/gcli.git
+[submodule "src/thirdparty/ace"]
+	path = src/thirdparty/ace
+	url = git://github.com/ajaxorg/ace-builds.git
