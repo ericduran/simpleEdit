@@ -1,0 +1,17 @@
+Notes & Ideas
+
+Tabs:
+  <li data-uri="file:///home/etc/workspace/file/name.js">
+    <span>name.js</span>
+    // I'm going to try to avoid <a>.
+  </li>
+
+
+Editor ALWAYS has focus!!!!!
+ - If a user clicks on the file, the editor instance for that file has FOCUS
+ - If a user clicks a tab, the editor for that tab has FOCUS
+ - No matter what a user clicks, the corresponding editor has FOCUS
+
+
+Ace Editor vs CodeMirror:
+ - So ace doesn't really play nice with window resizing. It's not horrible it's just CodeMirror is a lot simpler

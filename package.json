@@ -1,0 +1,7 @@
+{
+  "name": "simple-editor",
+  "main": "src/index.html",
+  "window": {
+    "toolbar": true
+  }
+}
