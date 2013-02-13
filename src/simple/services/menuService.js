@@ -3,18 +3,12 @@
  *
  * Manages the actual Native Menu aka File, Edit, etc..
  */
+define (['simple/app', 'simple/menu/file', 'simple/menu/view'], function(simple, file, view) {
+  angular.module('simpleEdit.menuService', []).service('menuService', function ($rootScope) {
+  
+    var gui = simple.gui;
 
-var menuService = angular.module('simpleEdit.menuService', []).service('menuService', function ($rootScope) {
-
-  // Node webkit vars
-  requirejs = require;
-  require = requireNode;
-  var gui = require('nw.gui');
-  var menubar = new gui.Menu({type: 'menubar'});
-  console.log(gui.App.argv);
-  // // Menus
-
-  var file = new gui.Menu();
+    var menubar = new gui.Menu({type: 'menubar'});
 
   // // Vars
   var showSideBar = true,
@@ -28,35 +22,7 @@ var menuService = angular.module('simpleEdit.menuService', []).service('menuServ
       folderVisible = true;
 
 
-  file.append(new gui.MenuItem({
-    label: "New File"
-  }));
-  file.append(new gui.MenuItem({
-    label: "Open...",
-    click: function () {
-      $("#openFile").trigger("click");
-    }
-  }));
 
-  // View
-  var view = new gui.Menu();
-  var sidebarItem = new gui.MenuItem({
-    label: "Hide Side Bar",
-    click: function() {
-      // TODO: Quick hack just to see if it works.
-      $rootScope.$apply(function() {
-          if (sideBarVisible) {
-          sidebarItem.label = 'Show Side Bar'
-          sideBarVisible = false
-        }
-        else {
-          sidebarItem.label = 'Hide Side Bar'
-          sideBarVisible = true
-        }        
-      });
-    }
-  });
-  view.append(sidebarItem);
   menubar.append(new gui.MenuItem({
       label: 'File',
       submenu: file
@@ -78,6 +44,12 @@ var menuService = angular.module('simpleEdit.menuService', []).service('menuServ
     showOpenFiles: function() {
       return openFilesVisible;
     },
+    sidebarHide: function() {
+      showSidebar = false;
+    },
+    sidebarShow: function() {
+      showSidebar = true;
+    },
     showSidebar: function() {
       return sideBarVisible;
     },
@@ -88,4 +60,6 @@ var menuService = angular.module('simpleEdit.menuService', []).service('menuServ
 
     }
   };
+
+  });
 });

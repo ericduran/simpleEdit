@@ -4,6 +4,7 @@
  */
 angular.module('ui.directives').directive('uiCodemirror', ['ui.config', '$parse', function (uiConfig, $parse) {
   'use strict';
+
   uiConfig.codemirror = uiConfig.codemirror || {};
   return {
     require: 'ngModel',
@@ -29,6 +30,7 @@ angular.module('ui.directives').directive('uiCodemirror', ['ui.config', '$parse'
       var updateCodeMirror = function (options) {
         // Merge together the options from the uiConfig and the attribute itself with the onChange event above.
         options = angular.extend({}, options, uiConfig.codemirror);
+
         // We actually want to run both handlers if the user has provided their own onChange handler.
         var userOnChange = options.onChange;
         if (userOnChange) {

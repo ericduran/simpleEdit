@@ -7,10 +7,13 @@
 define([
   'simple/app',
   'angular',
+  'angularui',
+  'simple/controllers/sideBar',
   'simple/controllers/fileSystemController',
+  'simple/services/layoutManager',
   'simple/services/documentService',
   'simple/services/menuService'], function (simple) {
 
-    simple.App = angular.module('simpleEdit', ['simpleEdit.fileSystem', 'simpleEdit.documentService', 'simpleEdit.menuService']);
+    simple.App = angular.module('simpleEdit', ['ui.directives', 'simpleEdit.fileSystem', 'simpleEdit.sidebar', 'simpleEdit.layoutManager', 'simpleEdit.documentService', 'simpleEdit.menuService']);
 
 });

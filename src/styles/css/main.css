@@ -5,22 +5,28 @@
   -webkit-box-sizing: border-box;
 }
 
-body, html{
+body, html {
   height: 100%;
+}
+
+a {
+  color: #616060;
+  text-decoration: none;
+  cursor: default;
 }
 
 @font-face {
   font-family: 'SourceCodePro';
-  src: url('../../thirdparty/SourceCodePro/OTF/SourceCodePro-Regular.otf') format('opentype');
+  src: url("../../thirdparty/SourceCodePro/OTF/SourceCodePro-Regular.otf") format("opentype");
 }
 
 .ace-editors-divs.ace_editor {
-  font-family: 'SourceCodePro', 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+  font-family: "SourceCodePro", "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
 }
 
 body {
-    font-family: TextFont, Tahoma, Geneva, sans-serif;
-    text-rendering: auto;
+  font-family: TextFont, Tahoma, Geneva, sans-serif;
+  text-rendering: auto;
 }
 
 .click {
@@ -46,24 +52,152 @@ body {
 }
 
 #editors {
+  background: #363838;
   -webkit-flex: 1;
   flex: 1;
   -webkit-order: 1;
   order: 1;
-  background: rgb(10, 29, 34);
+}
+
+#editors.layout-single {
+  -webkit-flex: 1;
+  flex: 1;
+  -webkit-order: 1;
+  order: 1;
+}
+
+.layout-split {
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-flex: 1;
+  flex: 1;
+  -webkit-order: 1;
+  order: 1;
+}
+
+.layout-single {
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+}
+
+.layout-split .layout-wrapper {
+  -webkit-box-flex: 1;
+  border-right: 1px solid black;
 }
 
 #status-bar {
-height: 20px
+  height: 20px;
 }
 
 .tabs {
-  height: 30px;
+  height: 29px;
 }
 
 .tab {
-border: 1px solid black; 
-padding: 5px;
-margin: 5px;
--webkit-user-select: none;
+  padding: 0px 5px 0px 5px;
+  -webkit-user-select: none;
+  display: inline-block;
+  margin: 0px -20px 0px 5px;
+  height: 25px;
+  margin-top: 4px;
+  position: relative;
+  top: 0 !important;
+  /* Only allow user to slide the tabs left and right */
 }
+
+/* ------------------------------------------------------------------------------------------
+ * LEGACY CODE
+ * --------------------------------------------------------------------------------------- */
+.tab {
+  background:
+    url(../../images/editor_tab.png) left -79px no-repeat,
+    url(../../images/editor_tab.png) right -131px no-repeat,
+    url(../../images/editor_tab.png) 40px -105px repeat-x content-box;
+  overflow: hidden;
+  padding: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 25px;
+  margin-left: 15px;
+  margin-right: -30px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+
+  position: relative;
+  overflow: hidden;
+  top: 0;
+}
+.tab a {
+    color: rgb(199, 196, 196);
+text-decoration: none;
+cursor: default;
+font-weight: normal;
+font-size: .96em;
+
+}
+
+.selected.tab {
+  background-position: left 0px, right -52px, 0 -26px;
+  z-index: 1;
+}
+
+.selected.tab  a {
+  color: rgb(47, 47, 47);
+text-decoration: none;
+cursor: default;
+font-weight: normal;
+font-size: .96em;
+  
+}
+
+.tab-content {
+  padding-top: 3px;
+  padding-left: 10px;
+  padding-right: 0px;
+}
+
+/*.tab-left,
+.tab-right {
+  position: absolute;
+  height: 25px;
+  width: 20px;
+  background-repeat: ;
+  top: 0;
+}
+
+.tab-left {
+  background-position: ;
+  left: 0;
+}
+
+.tab-right {
+  background-position: ;
+  right: 0;
+}
+
+.tabs .down {
+  text-shadow: none;
+  color: #d9d9d9;
+}
+
+
+
+.tabs .curbtn {
+  color: #333333;
+  cursor: default;
+  text-shadow: rgba(255, 255, 255, 0.4) 0px 1px 0px;
+  z-index: 10;
+}
+
+.tabs .curbtn .center {
+  background-position: 0 -26px;
+  color: #000000;
+}
+
+.tabs .curbtn .tab-left {
+  background-position: 0 0;
+}
+
+.tabs .curbtn .tab-right {
+  background-position: 0 -52px;
+} */

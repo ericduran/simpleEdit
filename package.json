@@ -1,6 +1,14 @@
 {
   "name": "simple-editor",
+  "description": "An editor for JavaScript projects.",
+  "author": "Eric J. Duran",
+  "homepage": "http://github.com/ericduran/simpleEditor",
+  "dependencies": {
+    "underscore": "~1.2.4",
+    "grunt-compass": "~0.3.8"
+  },
   "main": "src/index.html",
+  "version": "1.0.0",
   "window": {
     "toolbar": true
   }

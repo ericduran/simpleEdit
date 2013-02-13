@@ -6,18 +6,74 @@
 define(['simple/app', 'ace/ace', 'ace/theme/solarized_other', 'ace/mode/javascript', 'ace/mode/html', 'ace/mode/css', 'simple/ace-helper'], function (simple, ace) {
   var nodeFS = requireNode("fs"),
       nodePath = requireNode('path'),
+      readdirp = requireNode('readdirp'),
+      path = requireNode('path'),
+      es = requireNode('event-stream'),
       _ = requireNode('underscore');
 
   var fileSystem = angular.module('simpleEdit.fileSystem', []);
 
-  fileSystem.controller('fileController', ['$scope', 'documentService', 'menuService', function ($scope, documentService, menuService) {
+  fileSystem.controller('fileController', ['$scope', 'documentService', 'menuService', 'layoutManager', function ($scope, documentService, menuService, layoutManager) {
 
+    $scope.layout =  {
+      templates: 'templates/split-layout.html',
+      column: ['templates/single-layout.html', 'layout-right'],
+      class: 'layout-split',
+    };
+
+    var content = '';
+    var filesDir = [];
+
+    var traverseFileSystem = function (currentPath) {
+      var files = nodeFS.readdirSync(currentPath);
+      content += '<ul>';
+      for (var i in files) {
+
+        var currentFile = currentPath + '/' + files[i];
+        var stats = nodeFS.statSync(currentFile);
+        content += '<li>';
+        if (stats.isFile()) {
+          content += '<a href="#">' + files[i] + '</a>';
+        }
+        else if (stats.isDirectory()) {
+          content += files[i];
+          traverseFileSystem(currentFile);
+        }
+        content += '</li>';
+      }
+      content += '</ul>';
+
+      $scope.$digest();
+    };
+
+    $scope.sortableOptions = {
+      axis: 'x',
+      stack: ".tab",
+      connectWith: "ul"
+    };
     // Entry points for file loading/unloading
     $scope.unloadFile = function() {
+    }
+
+    $scope.getFilesDir = function() {
+      return content;
+    }
+    $scope.openDir = function(path) {
+      traverseFileSystem(path);
     }
     
     $scope.removeFile = function (uri) {
      documentService.deleteDocument(uri);
+    }
+
+    $scope.getClass = function(uri) {
+      var cur = documentService.getActive();
+      if (uri === cur) {
+        return 'selected';
+      }
+      else {
+        return '';
+      }
     }
 
     $scope.getActive = function() {
@@ -42,7 +98,8 @@ define(['simple/app', 'ace/ace', 'ace/theme/solarized_other', 'ace/mode/javascri
       return menuService.showSidebar();
     }
   
-    $scope.getOpenFiles = function() {
+    $scope.getOpenFiles = function(layout) {
+      console.log(layout);
       return documentService.getDocuments();
     };
 

@@ -1,12 +1,10 @@
 /**
  *
  */
-var _ = requireNode('underscore');
-
-
-var documentService = angular.module('simpleEdit.documentService', []);
-documentService.factory('documentService', function ($rootScope) {
-
+define(function() {
+  var _ = requireNode('underscore');
+  angular.module('simpleEdit.documentService', []).factory('documentService', function ($rootScope) {
+  
   var documents = [],
   activeURI = false;
 
@@ -55,9 +53,13 @@ documentService.factory('documentService', function ($rootScope) {
     deleteDocument: function (uri) {
         documents.forEach(function (doc, index) {
          if (doc.uri == uri) {
-           delete documents[index];;
+            documents.splice(index,1);
          }    
         });
     }
   };
 });
+
+
+})
+

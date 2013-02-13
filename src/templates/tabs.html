@@ -1,0 +1,9 @@
+
+  <ul ui-sortable="sortableOptions" ng-model="item">
+    <li class="tab ui-state-default" ng-repeat="doc in getOpenFiles()" id="s-{{$index}}">
+      <div class="tab-content">
+        <a data-uri="{{doc.uri}}" ng-click="setActive(doc.uri)">{{doc.name}}</a>
+        <i class="icon-remove" ng-click="removeFile(doc.uri)"></i>
+      </div>
+    </li>
+  </ul>

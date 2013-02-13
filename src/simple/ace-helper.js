@@ -2,7 +2,6 @@
 define(['simple/app', 'ace/ace'], function (simple, ace) {
   'use strict';
 
- 
   simple.util = (function utilClosure() {
 
     function util() {}
@@ -31,8 +30,8 @@ define(['simple/app', 'ace/ace'], function (simple, ace) {
         "inc": "ace/mode/php"
       };
 
-      if (modes[ext] != undefined) {
-        return modes[ext];    
+      if (modes[ext] !== undefined) {
+        return modes[ext];
       }
     }
 

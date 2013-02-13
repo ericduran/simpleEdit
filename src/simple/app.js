@@ -1,5 +1,27 @@
 define(function () {
-  var simple = {};
+  var simple = {
+    controller: {},
+    services: {}
+  };
+
+
+  // Fix for requireJS and node require
+  (function() {
+    // Set require back to requireNode.
+    // @see https://github.com/rogerwang/node-webkit/issues/422
+    var requirejs = require;
+    require = requireNode;
+
+    simple.gui = require('nw.gui');
+
+    requireNode = require;
+    require = requirejs;
+  })();
+
+
+  simple.gui.App.on('open', function (path) {
+    console.log('Opening: ' + path);
+  });
 
   simple.config = (function configClosure() {
     function config() {}
@@ -10,6 +32,7 @@ define(function () {
 
     config.getSoftTabs = function() {
       return true;
+      
     }
 
     config.getTabSize = function() {

@@ -1,0 +1,6 @@
+
+      <div class="tabs" ng-include src="tabs.html">
+      </div>
+      <div class="editor-wrapper">
+        <div ng-repeat="doc in getOpenFiles(item)" ng-show="getActive() == doc.uri" id="{{doc.uri}}" class="ace-editors-divs"></div>
+      </div>

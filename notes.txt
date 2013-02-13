@@ -15,3 +15,6 @@ Editor ALWAYS has focus!!!!!
 
 Ace Editor vs CodeMirror:
  - So ace doesn't really play nice with window resizing. It's not horrible it's just CodeMirror is a lot simpler
+
+
+SVG -> The chrome tabs

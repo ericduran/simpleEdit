@@ -1,0 +1,9 @@
+{
+  "name": "jstree",
+  "version": "0.0.0",
+  "commit": "9af3467dd3385713e6740b4ca498292b8cdcb837",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vakata/jstree.git"
+  }
+}
