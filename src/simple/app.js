@@ -27,7 +27,7 @@ define(function () {
     function config() {}
 
     config.getDefaultTheme = function() {
-      return "ace/theme/solarized_other";
+      return "ace/theme/solarized_dark";
     }
 
     config.getSoftTabs = function() {

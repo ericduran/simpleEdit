@@ -3,7 +3,7 @@
  * Controls Open/Saving New Files.
  */
 
-define(['simple/app', 'ace/ace', 'ace/theme/solarized_other', 'ace/mode/javascript', 'ace/mode/html', 'ace/mode/css', 'simple/ace-helper'], function (simple, ace) {
+define(['simple/app', 'ace/ace', 'ace/theme/solarized_dark', 'ace/mode/javascript', 'ace/mode/html', 'ace/mode/css', 'simple/ace-helper'], function (simple, ace) {
   var nodeFS = requireNode("fs"),
       nodePath = requireNode('path'),
       readdirp = requireNode('readdirp'),
