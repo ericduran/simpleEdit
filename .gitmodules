@@ -6,4 +6,4 @@
 	url = git://github.com/joewalker/gcli.git
 [submodule "src/thirdparty/ace"]
 	path = src/thirdparty/ace
-	url = git://github.com/ajaxorg/ace-builds.git
+	url = git://github.com/ajaxorg/ace.git
