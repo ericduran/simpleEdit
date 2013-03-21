@@ -4,3 +4,6 @@
 [submodule "src/thirdparty/gcli"]
 	path = src/thirdparty/gcli
 	url = git://github.com/joewalker/gcli.git
+[submodule "src/thirdparty/ace"]
+	path = src/thirdparty/ace
+	url = git://github.com/ajaxorg/ace.git
