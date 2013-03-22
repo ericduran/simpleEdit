@@ -4,11 +4,16 @@
 module.exports = function(grunt) {
 
   // Load grunt plugins.
+  grunt.loadNpmTasks('grunt-bower-requirejs');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-compass');
 
   // Project configuration.
   grunt.initConfig({
+    bower: {
+      target: {
+        rjsConfig: './src/simple/main.js'
+      }
+    },
     jshint: {
       all: [
         'Gruntfile.js',
@@ -19,5 +24,5 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', 'jshint');
+  grunt.registerTask('default', ['bower', 'jshint']);
 };
