@@ -59,10 +59,5 @@ $(document).ready (function() {
 
 var nodePath = requireNode('path');
 
-key('⌘+s', function(){
-  angular.element($('#application')).scope().saveActiveFile();
-  alert('File Saved');
-});
-
 
 
