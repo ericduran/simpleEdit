@@ -9,6 +9,8 @@ define(['simple/app', 'ace/ace'], function (simple, ace) {
     util.configEditor = function(editor, filename) {
       var session = editor.getSession();
 
+      console.log("blah");
+
       // Editor settings.
       editor.setTheme(simple.config.getDefaultTheme());
 
@@ -16,6 +18,8 @@ define(['simple/app', 'ace/ace'], function (simple, ace) {
       session.setUseSoftTabs(simple.config.getSoftTabs());
       session.setTabSize(simple.config.getTabSize());
       session.setMode(util.getModeFromExtension(filename));
+
+
     };
 
     util.getModeFromExtension = function(fileName) {
@@ -60,17 +64,5 @@ key('⌘+s', function(){
   alert('File Saved');
 });
 
-
-//editor.commands.addCommand({
-// name: 'saveFile',
-// bindKey: {
-// win: 'Ctrl-S',
-// mac: 'Command-S',
-// sender: 'editor|cli'
-// },
-// exec: function(env, args, request) {
-// alert("HI!");
-// }
-// });
 
 

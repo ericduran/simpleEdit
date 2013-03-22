@@ -123,12 +123,68 @@ define(['simple/app', 'ace/ace', 'ace/theme/solarized_dark', 'ace/mode/javascrip
 
             // Set our default settings.
             simple.util.configEditor(editor, fileName);
-
+            console.log('blah');
             editor.setValue(String(data));
             editor.focus();
             editor.gotoLine(0, 0);
             $('.ace-editors-divs').height($(window).height() - 20);
             editor.resize();
+            editor.commands.addCommand({
+              name: 'saveFile',
+              bindKey: {
+                win: 'Ctrl-S',
+                mac: 'Command-S',
+                sender: 'editor|cli'
+              },
+              exec: function(env, args, request) {
+                $scope.saveActiveFile();
+              }
+            });
+            editor.commands.addCommand({
+              name: 'openFile',
+              bindKey: {
+                win: 'Ctrl-O',
+                mac: 'Command-O',
+                sender: 'editor|cli'
+              },
+              exec: function(env, args, request) {
+                $("#openFile").trigger("click");
+              }
+            });
+            editor.commands.addCommand({
+              name: 'closeFile',
+              bindKey: {
+                win: 'Ctrl-W',
+                mac: 'Command-W',
+                sender: 'editor|cli'
+              },
+              exec: function(env, args, request) {
+                $scope.removeFile(documentService.getActive());
+                $scope.$digest();
+              }
+            });
+            editor.commands.addCommand({
+              name: 'switchFile',
+              bindKey: {
+                win: 'Ctrl-shift-]',
+                mac: 'Command-Shift-]',
+                sender: 'editor|cli'
+              },
+              exec: function(env, args, request) {
+                alert('Move to next file');
+              }
+            });
+            editor.commands.addCommand({
+              name: 'switchFile',
+              bindKey: {
+                win: 'Ctrl-shift-]',
+                mac: 'Command-Shift-[',
+                sender: 'editor|cli'
+              },
+              exec: function(env, args, request) {
+                alert('Move to prev file');
+              }
+            });
           }
         });
       }
