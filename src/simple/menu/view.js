@@ -18,16 +18,16 @@ define(['simple/app'], function (Simple) {
   // Helper Functions.
   view.toggleSideBar = function() {
     if (sidebar === true) {
-      sidebarItem.label = 'Show Side Bar'
-      sidebar = false
+      sidebarItem.label = 'Show Side Bar';
+      sidebar = false;
     }
     else {
-      sidebarItem.label = 'Hide Side Bar'
-      sidebar = true
+      sidebarItem.label = 'Hide Side Bar';
+      sidebar = true;
     }
 
     return sidebar;
-  }
+  };
 
   return view;
-})
+});

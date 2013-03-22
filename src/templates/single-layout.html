@@ -1,6 +1,30 @@
 
-      <div class="tabs" ng-include src="tabs.html">
+  <ul ui-sortable="sortableOptions" ng-model="item">
+    <li class="tab ui-state-default" ng-repeat="doc in getOpenFiles()" id="s-{{$index}}">
+      <div class="tab-content">
+        <a data-uri="{{doc.uri}}" ng-click="setActive(doc.uri)">{{doc.name}}</a>
+        <i class="icon-remove" ng-click="removeFile(doc.uri)"></i>
+      </div>
+    </li>
+  </ul>
+
+      <div class="editor-wrapper">
+        <div ng-repeat="doc in getOpenFiles(item)" ng-show="getActive() == doc.uri" id="{{doc.uri}}" class="ace-editors-divs"></div>
+      </div>
+
+  <div ng-repeat="style in layout.column" class="layout-wrapper">
+      <div class="tabs">
+          <ul ui-sortable="sortableOptions" ng-model="item">
+
+    <li class="tab ui-state-default" ng-repeat="doc in getOpenFiles()" ng-class="getClass(doc.uri)" ng-mousedown="setActive(doc.uri)">
+      <div class="tab-content">
+        <a data-uri="{{doc.uri}}">{{doc.name}}</a>
+        <i class="icon-remove" ng-click="removeFile(doc.uri)"></i>
+      </div>
+    </li>
+  </ul>
       </div>
       <div class="editor-wrapper">
         <div ng-repeat="doc in getOpenFiles(item)" ng-show="getActive() == doc.uri" id="{{doc.uri}}" class="ace-editors-divs"></div>
       </div>
+  </div>

@@ -16,7 +16,7 @@ define(['simple/app', 'ace/ace'], function (simple, ace) {
       session.setUseSoftTabs(simple.config.getSoftTabs());
       session.setTabSize(simple.config.getTabSize());
       session.setMode(util.getModeFromExtension(filename));
-    }
+    };
 
     util.getModeFromExtension = function(fileName) {
       // Make this is a saveable config file.
@@ -33,12 +33,12 @@ define(['simple/app', 'ace/ace'], function (simple, ace) {
       if (modes[ext] !== undefined) {
         return modes[ext];
       }
-    }
+    };
 
     util.getExtension = function(filename) {
       var ext = nodePath.extname(filename||'').split('.');
       return ext[ext.length - 1];
-    }
+    };
 
     return util;
 
@@ -50,13 +50,10 @@ $(document).ready (function() {
   $(window).resize(function() {
     $('.ace-editors-divs').height($(window).height() - 35);
   });
-})
+});
 
 
 var nodePath = requireNode('path');
-
-
-
 
 key('⌘+s', function(){
   angular.element($('#application')).scope().saveActiveFile();

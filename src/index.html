@@ -6,7 +6,6 @@
   <link rel="stylesheet" type="text/css" href="./components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="./styles/css/main.css">
 
-
   <script type="text/javascript">
     (function(win) {
       // We need to rename require for node-webkit and requirejs compatibility.
@@ -15,13 +14,15 @@
 
       // Prevent anything from stealing our screen.
       win.ondrop = function(e) {
-        e.preventDefault()
-        return false
+        // This is a temporary hacks because reminder we are running in chrome.
+        // So if you drag a json file or anything, it'll render the json.
+        // Eventually we'll pass the item to the actual textview.
+        e.preventDefault();
+        return false;
       };
 
     })(window);
   </script>
-
   <script src="./components/jquery/jquery.min.js"></script>
   <script src="./components/jquery-ui/ui/minified/jquery-ui.custom.min.js"></script>
   <script src="./components/jstree/dist/jstree.min.js"></script>
@@ -32,7 +33,6 @@
 <body>
 
 <div id="application" ng:controller="fileController">
-
   <div id="sidebar" ng:controller="sideBarController" ng-show="showSidebar()">
     <div class="open-files" ng-show="showOpenFiles()">
       <span>Open Files</span>
@@ -49,9 +49,22 @@
       <input id="openDir" type="file" nwdirectory onchange="angular.element(this).scope().openDir(this.value)" /> 
     </div>
   </div>
-  
-  <div id="editors" ng-include src="layout.templates"  ng-class="layout.class"></div>
 
+  <div id="editors">
+    <ul ui-sortable="sortableOptions" ng-model="item">
+
+      <li class="tab ui-state-default" ng-repeat="doc in getOpenFiles()" ng-class="getClass(doc.uri)" ng-mousedown="setActive(doc.uri)">
+        <div class="tab-content">
+          <a data-uri="{{doc.uri}}">{{doc.name}}</a>
+          <i class="icon-remove" ng-click="removeFile(doc.uri)"></i>
+        </div>
+      </li>
+    </ul>
+
+    <div class="editor-wrapper">
+      <div ng-repeat="doc in getOpenFiles(item)" ng-show="getActive() == doc.uri" id="{{doc.uri}}" class="ace-editors-divs"></div>
+    </div>
+  </div>
 </div>
 
 </body>

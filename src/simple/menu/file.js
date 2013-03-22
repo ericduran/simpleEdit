@@ -65,4 +65,4 @@ define(['simple/app'], function (Simple) {
   }));
 
   return file;
-})
+});

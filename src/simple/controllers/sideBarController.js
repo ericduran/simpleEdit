@@ -8,10 +8,10 @@ sideBar.controller('fileController', ['$scope', 'documentService', 'menuService'
 
   $scope.showOpenFiles = function() {
     return menuService.showOpenFiles();
-  }
+  };
 
   $scope.showSidebar= function() {
     return menuService.showSidebar();
-  }
+  };
 
 }]);

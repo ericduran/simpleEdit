@@ -7,11 +7,11 @@ define(function() {
 
     $scope.showOpenFiles = function() {
       return true;
-    }
+    };
 
     $scope.showSidebar= function() {
       return true;
-    }
+    };
 
   }]);
 });

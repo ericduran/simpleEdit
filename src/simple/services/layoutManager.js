@@ -11,6 +11,6 @@ define(function() {
       addFile: function(layout, uri) {
         layouts[layout].push(uri);
       }
-    }
+    };
   });
 });

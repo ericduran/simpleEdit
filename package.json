@@ -10,7 +10,8 @@
     "event-stream": "~3.0.12"
   },
   "devDependencies": {
-    "grunt": "0.4.1"
+    "grunt": "0.4.1",
+    "grunt-contrib-jshint": "~0.3.0"
   },
   "main": "src/index.html",
   "version": "0.0.1",

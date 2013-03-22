@@ -16,7 +16,7 @@ define (['simple/app', 'simple/menu/file', 'simple/menu/view'], function(simple,
       showFolders = true,
       showTabs = true,
       showStatusBar = true,
-      showCLI = false
+      showCLI = false,
       sideBarVisible = true,
       openFilesVisible = true,
       folderVisible = true;
