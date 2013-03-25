@@ -1,8 +1,9 @@
 /**
- *
+ * Document Services.
  */
 define(function() {
   var _ = requireNode('underscore');
+  // TODO: Stop using $rootScope.
   angular.module('simpleEdit.documentService', []).factory('documentService', function ($rootScope) {
 
     var documents = [],
@@ -10,7 +11,7 @@ define(function() {
 
     return {
       isDupe: function(uri) {
-      // Make sure the url isn't loaded already.
+        // Make sure the url isn't loaded already.
         var list = _.chain(documents)
         .pluck('uri')
         .flatten()
@@ -33,6 +34,12 @@ define(function() {
       getDocuments: function () {
         return documents;
       },
+      getNextDoc: function() {
+        return documents[0];
+      },
+      getPrevDoc: function() {
+        return documents[1];
+      },
       addDocument: function (uri, name, layout) {
         layout = layout || 1;
 
@@ -40,6 +47,10 @@ define(function() {
           this.setActive(uri);
         }
         else {
+          // TODO: Stop using Array.push, I know angular likes
+          // it because it automatically knows to update the templates
+          // but it just makes it harder for us to do logic on a keyless
+          // array.
           $rootScope.$apply(function() {
             documents.push({
               uri: uri,

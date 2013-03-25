@@ -2,11 +2,14 @@
  * File System Controller.
  * Controls Open/Saving New Files.
  */
+// TODO: Rename to use standard Ctrl suffix.
 define(['simple/app', 'ace/ace', 'ace/theme/solarized_dark', 'ace/mode/javascript', 'ace/mode/html', 'ace/mode/css', 'simple/ace-helper'], function (simple, ace) {
   var nodeFS = requireNode("fs"),
       nodePath = requireNode('path'),
       readdirp = requireNode('readdirp'),
       path = requireNode('path'),
+      wrench = requireNode('wrench'),
+      util = requireNode('util'),
       es = requireNode('event-stream'),
       _ = requireNode('underscore');
 
@@ -23,7 +26,6 @@ define(['simple/app', 'ace/ace', 'ace/theme/solarized_dark', 'ace/mode/javascrip
     var filesDir = [];
 
     var traverseFileSystem = function (currentPath) {
-      var files = nodeFS.readdirSync(currentPath);
       content += '<ul>';
       for (var i in files) {
 
@@ -49,6 +51,16 @@ define(['simple/app', 'ace/ace', 'ace/theme/solarized_dark', 'ace/mode/javascrip
       stack: ".tab",
       connectWith: "ul"
     };
+
+    $scope.prevDoc = function() {
+      documentService.getPrevDoc();
+
+    };
+
+    $scope.nextDoc = function() {
+      documentService.getNextDoc();
+    };
+
     // Entry points for file loading/unloading
     $scope.unloadFile = function() {
     };
@@ -97,7 +109,6 @@ define(['simple/app', 'ace/ace', 'ace/theme/solarized_dark', 'ace/mode/javascrip
     };
 
     $scope.getOpenFiles = function(layout) {
-      console.log(layout);
       return documentService.getDocuments();
     };
 
@@ -171,7 +182,7 @@ define(['simple/app', 'ace/ace', 'ace/theme/solarized_dark', 'ace/mode/javascrip
                 sender: 'editor|cli'
               },
               exec: function(env, args, request) {
-                alert('Move to next file');
+                console.log($scope.nextDoc());
               }
             });
             editor.commands.addCommand({
@@ -182,7 +193,7 @@ define(['simple/app', 'ace/ace', 'ace/theme/solarized_dark', 'ace/mode/javascrip
                 sender: 'editor|cli'
               },
               exec: function(env, args, request) {
-                alert('Move to prev file');
+                console.log($scope.prevDoc());
               }
             });
           }

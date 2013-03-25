@@ -1,6 +1,6 @@
 {
-  "name": "simpleEditor",
-  "version": "1.0.0",
+  "name": "simple-editor",
+  "version": "0.0.1",
   "dependencies": {
     "angular": "1.0.4",
     "font-awesome": "3.0.2",

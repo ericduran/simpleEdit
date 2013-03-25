@@ -1,4 +1,9 @@
-
+/**
+ * Create a folder for "editors".
+ * We should support multiple editors, really why should we care if someone
+ * likes codemirror over ace, or etc..
+ * TODO: Make editors selection, configurable/plugable/etc.
+ */
 define(['simple/app', 'ace/ace'], function (simple, ace) {
   'use strict';
 
@@ -22,6 +27,7 @@ define(['simple/app', 'ace/ace'], function (simple, ace) {
 
     };
 
+    // TODO: This has nothing to do with ace. This should be generic.
     util.getModeFromExtension = function(fileName) {
       // Make this is a saveable config file.
       var ext = util.getExtension(fileName);
@@ -50,14 +56,13 @@ define(['simple/app', 'ace/ace'], function (simple, ace) {
 
 });
 
-$(document).ready (function() {
-  $(window).resize(function() {
-    $('.ace-editors-divs').height($(window).height() - 35);
+// TODO: Fix this. This is just a quick hack for ace.
+jQuery(document).ready(function() {
+  jQuery(window).resize(function() {
+    jQuery('.ace-editors-divs').height(jQuery(window).height() - 55);
   });
 });
 
-
+// I'm tired no idea why I added this. Just look it over later.
+// TODO: WTF?
 var nodePath = requireNode('path');
-
-
-

@@ -1,0 +1,7 @@
+{
+  "name": "Plugin Sample",
+  "version": "0.0.1",
+  "controller": "maybeNotSureCtrl",
+  "css": "again-no-clue-here.css",
+  "js": "js & controller? WTF!"
+}

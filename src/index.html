@@ -5,35 +5,11 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link rel="stylesheet" type="text/css" href="./components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="./styles/css/main.css">
-
-  <script type="text/javascript">
-    (function(win) {
-      // We need to rename require for node-webkit and requirejs compatibility.
-      win.requireNode = window.require;
-      win.require = undefined;
-
-      // Prevent anything from stealing our screen.
-      win.ondrop = function(e) {
-        // This is a temporary hacks because reminder we are running in chrome.
-        // So if you drag a json file or anything, it'll render the json.
-        // Eventually we'll pass the item to the actual textview.
-        e.preventDefault();
-        return false;
-      };
-
-    })(window);
-  </script>
-  <script src="./components/jquery/jquery.min.js"></script>
-  <script src="./components/jquery-ui/ui/minified/jquery-ui.custom.min.js"></script>
-  <script src="./components/jstree/dist/jstree.min.js"></script>
-  <script data-main="simple/main" src="./components/requirejs/require.js"></script>
-  <script src="./thirdparty/ace/build/src/ace.js"></script>
-  <script src="./components/keymaster/keymaster.min.js"></script>
 </head>
 <body>
 
 <div id="application" ng:controller="fileController">
-  <div id="sidebar" ng:controller="sideBarController" ng-show="showSidebar()">
+  <div id="sidebar" ng:controller="sideBarCtrl" ng-show="showSidebar()">
     <div class="open-files" ng-show="showOpenFiles()">
       <span>Open Files</span>
       <ul>
@@ -43,16 +19,14 @@
     <span>Folders</span>
     <div id="test" ng-bind-html-unsafe="getFilesDir()"></div>
 
-    <div id="file-controller" style="">
+    <div id="file-controller" style="display:none;">
       <input id="openFile" type="file" multiple="multiple" onchange="angular.element(this).scope().openFile(this.value)" />
       <input id="saveFile" type="file" nwsaveas onchange="angular.element(this).scope().saveAsFile(this.value)" />
       <input id="openDir" type="file" nwdirectory onchange="angular.element(this).scope().openDir(this.value)" /> 
     </div>
   </div>
-
-  <div id="editors">
+  <div id="editors" class="contents">
     <ul ui-sortable="sortableOptions" ng-model="item">
-
       <li class="tab ui-state-default" ng-repeat="doc in getOpenFiles()" ng-class="getClass(doc.uri)" ng-mousedown="setActive(doc.uri)">
         <div class="tab-content">
           <a data-uri="{{doc.uri}}">{{doc.name}}</a>
@@ -60,12 +34,25 @@
         </div>
       </li>
     </ul>
-
     <div class="editor-wrapper">
       <div ng-repeat="doc in getOpenFiles(item)" ng-show="getActive() == doc.uri" id="{{doc.uri}}" class="ace-editors-divs"></div>
     </div>
   </div>
 </div>
 
+<div class="status-bar">
+  Line 20, Column 80; Saved ~/testing/Blah/Blah/Blah.js (UTF-8) - Spaces 2 JSON
+</div>
+
+<script type="text/javascript">
+  (function(win) {
+    // Sadly this has to happen here.
+    // We need to rename require for node-webkit and requirejs compatibility.
+    win.requireNode = window.require;
+    win.require = undefined;
+  })(window);
+</script>
+<script type="text/javascript" src="scripts/hacks.js"></script>
+<script data-main="scripts/main" src="./components/requirejs/require.js"></script>
 </body>
 </html>

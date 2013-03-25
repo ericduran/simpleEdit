@@ -18,3 +18,7 @@ Ace Editor vs CodeMirror:
 
 
 SVG -> The chrome tabs
+
+
+On edit, put a star next to the file
+- Allow files to be dragged to border and gives preview for them.

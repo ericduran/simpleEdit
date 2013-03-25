@@ -5,9 +5,10 @@
   "homepage": "http://github.com/ericduran/simpleEditor",
   "dependencies": {
     "async": "~0.1.22",
-    "underscore": "~1.2.4",
+    "esprima": "~1.0.2",
+    "event-stream": "~3.0.12",
     "readdirp": "~0.2.4",
-    "event-stream": "~3.0.12"
+    "underscore": "~1.2.4"
   },
   "devDependencies": {
     "grunt": "0.4.1",
