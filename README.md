@@ -53,3 +53,10 @@ Screenshots:
 ##Logo:
 Currently I'm using [Nate Beaty](http://natebeaty.com/) Sublime Text 2 alternative icon. Mainly because I like it
 also the S works. This is with his permission of course.
+
+
+###Downloads
+You really should not be using this right now. That being said here are some mac binaries.
+These are dev binaries, nothing compilied minimized, etc. Just a whole 90MB if you want to go down that route.
+Actually, nevermind. Github no longet suports binaries download. I need to find a host.
+
