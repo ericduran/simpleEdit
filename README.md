@@ -50,4 +50,6 @@ Screenshots:
 ![screen](https://dl.dropbox.com/u/16395906/simple-edit.png)
 
 
-
+Logo:
+Currently I'm using [Nate Beaty](http://natebeaty.com/) Sublime Text 2 alternative icon. Mainly because I like it
+also the S works. This is with his permission of course.
