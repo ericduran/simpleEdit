@@ -45,5 +45,9 @@ choose not to :-p
  but I have not gotten that far.
 
 
+Screenshots:
+
+![screen](https://dl.dropbox.com/u/16395906/simple-edit.png)
+
 
 
